@@ -22,6 +22,7 @@ module.exports = {
         "background-200": "#5c5c5c",
         "background-300": "#878686",
         primary: "#3FDCFF",
+        "primary-100": "#2fbede",
         "neutral-0": "#FFFFFF",
       },
       keyframes: {
