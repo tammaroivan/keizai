@@ -8,13 +8,6 @@ module.exports = {
     "./src/**/*.{ts,tsx}",
   ],
   theme: {
-    colors: {
-      background: "#0F0F0F",
-      "background-100": "#343434",
-      "background-200": "#474747",
-      primary: "#3FDCFF",
-      "neutral-0": "#FFFFFF",
-    },
     container: {
       center: true,
       padding: "2rem",
@@ -23,6 +16,14 @@ module.exports = {
       },
     },
     extend: {
+      colors: {
+        background: "#0F0F0F",
+        "background-100": "#343434",
+        "background-200": "#5c5c5c",
+        "background-300": "#878686",
+        primary: "#3FDCFF",
+        "neutral-0": "#FFFFFF",
+      },
       keyframes: {
         "accordion-down": {
           from: { height: 0 },
