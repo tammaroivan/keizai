@@ -2,6 +2,7 @@ import React from "react";
 import { Select, SelectTrigger } from "@/components/ui/select";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
+import { Tooltip, TooltipContent, TooltipTrigger } from "./ui/tooltip";
 
 const ContractInput = () => {
   return (
@@ -13,11 +14,18 @@ const ContractInput = () => {
       </Select>
       <Input
         className="border-none dark:border-none dark:bg-background focus-visible:ring-0"
-        value="f47e3e34187dc84aa9ff41108082d289cdf6e40720cdfba8fcd9974369b9d32e"
+        defaultValue="f47e3e34187dc84aa9ff41108082d289cdf6e40720cdfba8fcd9974369b9d32e"
       />
-      <Button className="bg-primary dark:bg-primary text-black hover:bg-primary-100 dark:hover:bg-primary-100">
-        LOAD
-      </Button>
+      <Tooltip delayDuration={0}>
+        <TooltipTrigger asChild>
+          <Button className="bg-primary dark:bg-primary text-black hover:bg-primary-100 dark:hover:bg-primary-100">
+            LOAD
+          </Button>
+        </TooltipTrigger>
+        <TooltipContent>
+          <p>Coming soon</p>
+        </TooltipContent>
+      </Tooltip>
     </div>
   );
 };
