@@ -27,13 +27,9 @@ export default function Home() {
           />
           <ContractInput />
           <Tabs defaultValue="functions" className="">
-            <TabsList className="bg-white text-black dark:bg-background dark:text-white">
+            <TabsList className="">
               {Object.keys(tabs).map((tab) => (
-                <TabsTrigger
-                  key={tab}
-                  value={tab}
-                  className="data-[state=active]:bg-background data-[state=active]:dark:bg-white data-[state=active]:text-white data-[state=active]:dark:text-black  rounded-md"
-                >
+                <TabsTrigger key={tab} value={tab} className="">
                   {tabs[tab]}
                 </TabsTrigger>
               ))}

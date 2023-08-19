@@ -10,10 +10,10 @@ function Sidebar() {
   const currentRoute = usePathname();
 
   return (
-    <div className="h-screen w-[80px] flex flex-col  items-center justify-between bg-background border-r border-r-background-100 py-4">
+    <div className="h-screen w-[80px] flex flex-col items-center justify-between bg-foreground dark:bg-background border-r dark:border-r-border py-4">
       <div className="flex flex-col items-center">
         <Image src="/logo.svg" width={45} height={45} alt="Keizai Logo" />
-        <div className="flex flex-col mt-4 text-neutral-0">
+        <div className="flex flex-col mt-4">
           <Link
             href="/"
             className={`hover:text-primary p-4 ${

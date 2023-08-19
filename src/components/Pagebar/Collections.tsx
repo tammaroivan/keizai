@@ -24,14 +24,14 @@ const contractInvocations = [
 
 const Collections = () => {
   return (
-    <div className="w-[300px] flex-col dark:text-text border-r dark:border-r-background-100 h-full px-3 py-1">
+    <div className="w-[300px] flex-col border-r dark:border-r-border h-full px-3 py-1">
       <div className="flex items-center  justify-between">
         <h4 className="text-lg font-bold">Collections</h4>
         <div className="">
           <Button variant="secondary" className="text-xs px-2 py-1 h-auto ">
             New
           </Button>
-          <Button variant="link" className="p-2">
+          <Button variant="link" className="p-2 text-foreground">
             Import
           </Button>
         </div>
@@ -48,7 +48,7 @@ const Collections = () => {
             </SelectGroup>
           </SelectContent>
         </Select>
-        <Button variant="link" className="text-xs p-1 ">
+        <Button variant="link" className="text-xs p-1 text-foreground">
           Export collection
         </Button>
       </div>
@@ -63,8 +63,8 @@ const Collections = () => {
             <div className="flex flex-col gap-2 ml-5">
               {contractInvocations.map((invocation) => (
                 <div key={invocation} className="flex items-center gap-1">
-                  <Code height={16} className="text-background-200" />
-                  <Button variant="link" className="p-0 h-auto ">
+                  <Code height={16} className="text-neutral-500" />
+                  <Button variant="link" className="p-0 h-auto text-foreground">
                     {invocation}
                   </Button>
                 </div>
