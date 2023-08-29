@@ -22,6 +22,7 @@ const CollectionsContext = createContext<{
   removeCollection: (id: string) => void;
   selectedCollection: Collection | null;
   selectCollection: (id: string) => void;
+  addFolderToCollection: (id: string, name: string) => void;
 }>({
   loading: true,
   collections: [],
@@ -29,6 +30,7 @@ const CollectionsContext = createContext<{
   removeCollection: () => {},
   selectedCollection: null,
   selectCollection: () => {},
+  addFolderToCollection: () => {},
 });
 
 export const CollectionsProvider = ({
@@ -48,6 +50,20 @@ export const CollectionsProvider = ({
     setSelectedCollection(newValue.length ? newValue[0] : null);
     setLoading(false);
   }, []);
+
+  useEffect(() => {
+    const selectedCollectionData = collections.find(
+      (collection) => collection.id === selectedCollection?.id
+    );
+
+    if (
+      selectedCollectionData &&
+      selectedCollectionData?.folders.length !==
+        selectedCollection?.folders.length
+    ) {
+      setSelectedCollection(selectedCollectionData);
+    }
+  }, [collections, selectedCollection?.folders.length, selectedCollection?.id]);
 
   const addCollection = (name: string) => {
     const newValue = [
@@ -88,6 +104,29 @@ export const CollectionsProvider = ({
     setSelectedCollection(newValue);
   };
 
+  const addFolderToCollection = (id: string, name: string) => {
+    const newValue = collections.map((collection) => {
+      if (collection.id === id) {
+        return {
+          ...collection,
+          folders: [
+            ...collection.folders,
+            {
+              id: new Date().getTime().toString(),
+              name,
+              invocations: [],
+            },
+          ],
+        };
+      }
+
+      return collection;
+    });
+
+    setCollections(newValue);
+    localStorage.setItem("collections", JSON.stringify(newValue));
+  };
+
   return (
     <CollectionsContext.Provider
       value={{
@@ -96,6 +135,7 @@ export const CollectionsProvider = ({
         removeCollection,
         selectedCollection,
         selectCollection,
+        addFolderToCollection,
         loading,
       }}
     >

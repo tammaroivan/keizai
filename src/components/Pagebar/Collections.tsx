@@ -18,12 +18,7 @@ import {
 } from "@/components/ui/accordion";
 import { Code } from "lucide-react";
 import { useCollections } from "@/providers/CollectionsProvider";
-
-const contractInvocations = [
-  "Get current counter",
-  "Increase counter",
-  "Decrease counter",
-];
+import NewFolderButton from "../NewFolderButton";
 
 const Collections = () => {
   const {
@@ -32,6 +27,7 @@ const Collections = () => {
     removeCollection,
     selectedCollection,
     selectCollection,
+    addFolderToCollection,
   } = useCollections();
 
   return (
@@ -96,27 +92,35 @@ const Collections = () => {
           </Button>
         </div>
       </div>
-      <Accordion
-        type="multiple"
-        className="w-full"
-        defaultValue={["folder-id"]}
-      >
-        <AccordionItem value="folder-id" className="border-none">
-          <AccordionTrigger>Basic use case</AccordionTrigger>
-          <AccordionContent>
-            <div className="flex flex-col gap-2 ml-5">
-              {contractInvocations.map((invocation) => (
-                <div key={invocation} className="flex items-center gap-1">
-                  <Code height={16} className="text-neutral-500" />
-                  <Button variant="link" className="p-0 h-auto text-foreground">
-                    {invocation}
-                  </Button>
-                </div>
-              ))}
-            </div>
-          </AccordionContent>
-        </AccordionItem>
-      </Accordion>
+      {selectedCollection && (
+        <>
+          <Accordion type="multiple" className="w-full">
+            {selectedCollection?.folders.map((folder) => (
+              <AccordionItem
+                key={folder.id}
+                value={folder.id}
+                className="border-none"
+              >
+                <AccordionTrigger className="h-10">
+                  {folder.name}
+                </AccordionTrigger>
+                <AccordionContent>
+                  <div className="flex flex-col gap-2 ml-7 text-slate-400">
+                    No Invocations
+                  </div>
+                </AccordionContent>
+              </AccordionItem>
+            ))}
+          </Accordion>
+          <NewFolderButton
+            onClickAdd={() => {
+              if (selectedCollection) {
+                addFolderToCollection(selectedCollection.id, "New Folder");
+              }
+            }}
+          />
+        </>
+      )}
     </div>
   );
 };
