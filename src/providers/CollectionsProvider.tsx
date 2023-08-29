@@ -78,9 +78,7 @@ export const CollectionsProvider = ({
     setCollections(newValue);
 
     localStorage.setItem("collections", JSON.stringify(newValue));
-    if (newValue.length === 1) {
-      setSelectedCollection(newValue[0]);
-    }
+    setSelectedCollection(newValue[newValue.length - 1]);
   };
 
   const removeCollection = (id: string) => {

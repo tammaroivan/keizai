@@ -57,7 +57,7 @@ const Collections = () => {
             disabled={collections.length === 0}
             className="w-full mt-5"
           >
-            <SelectValue placeholder="Select a collection" />
+            <SelectValue placeholder="No collections" />
           </SelectTrigger>
           <SelectContent>
             <SelectGroup>
