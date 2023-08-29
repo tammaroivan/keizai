@@ -5,6 +5,7 @@ import Collections from "@/components/Pagebar/Collections";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import Image from "next/image";
 import Terminal from "@/components/ui/Terminal";
+import InvocationPage from "@/components/Pages/InvocationPage";
 
 const tabs: Record<string, string> = {
   functions: "Functions",
@@ -18,7 +19,7 @@ export default function Home() {
   return (
     <main className="flex flex-1">
       <Collections />
-      <div className="flex flex-col justify-between w-full gap-7">
+      <InvocationPage>
         <div className="flex flex-col p-3 w-full gap-7">
           <Breadcrumb
             contractName="Counter contract"
@@ -52,7 +53,7 @@ export default function Home() {
           </Tabs>
         </div>
         <Terminal />
-      </div>
+      </InvocationPage>
     </main>
   );
 }
