@@ -57,7 +57,7 @@ const Collections = () => {
         >
           <SelectTrigger
             disabled={collections.length === 0}
-            className="w-full mt-5"
+            className="w-full mt-3"
           >
             <SelectValue placeholder="No collections" />
           </SelectTrigger>
@@ -95,6 +95,7 @@ const Collections = () => {
       </div>
       {selectedCollection && (
         <>
+          <h4 className="text-lg font-bold mt-8">Folders</h4>
           <Accordion type="multiple" className="w-full">
             {selectedCollection?.folders.map((folder) => (
               <AccordionItem
