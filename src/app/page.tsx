@@ -41,6 +41,7 @@ export default function Home() {
                   alt="Load contract image"
                   width={300}
                   height={300}
+                  priority
                 />
                 <div className="flex flex-col justify-center text-primary font-black text-6xl">
                   <h2>Let&apos;s Load</h2>
