@@ -18,6 +18,7 @@ import {
 } from "@/components/ui/accordion";
 import { useCollections } from "@/providers/CollectionsProvider";
 import NewFolderButton from "../NewFolderButton";
+import { X } from "lucide-react";
 
 const Collections = () => {
   const {
@@ -27,6 +28,7 @@ const Collections = () => {
     selectedCollection,
     selectCollection,
     addFolderToCollection,
+    removeFolderFromCollection,
   } = useCollections();
 
   return (
@@ -100,8 +102,22 @@ const Collections = () => {
                 value={folder.id}
                 className="border-none"
               >
-                <AccordionTrigger className="h-10">
-                  {folder.name}
+                <AccordionTrigger className="h-10 w-full">
+                  <div className="flex justify-between items-center w-full group">
+                    <span>{folder.name}</span>
+                    <Button
+                      variant="ghost"
+                      className="w-fit h-fit p-1 opacity-0 group-hover:opacity-100"
+                      onClick={() =>
+                        removeFolderFromCollection(
+                          selectedCollection.id,
+                          folder.id
+                        )
+                      }
+                    >
+                      <X size={12} />
+                    </Button>
+                  </div>
                 </AccordionTrigger>
                 <AccordionContent>
                   <div className="flex flex-col gap-2 ml-7 text-slate-400">

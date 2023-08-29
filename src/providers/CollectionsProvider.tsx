@@ -23,6 +23,7 @@ const CollectionsContext = createContext<{
   selectedCollection: Collection | null;
   selectCollection: (id: string) => void;
   addFolderToCollection: (id: string, name: string) => void;
+  removeFolderFromCollection: (id: string, folderId: string) => void;
 }>({
   loading: true,
   collections: [],
@@ -31,6 +32,7 @@ const CollectionsContext = createContext<{
   selectedCollection: null,
   selectCollection: () => {},
   addFolderToCollection: () => {},
+  removeFolderFromCollection: () => {},
 });
 
 export const CollectionsProvider = ({
@@ -65,6 +67,11 @@ export const CollectionsProvider = ({
     }
   }, [collections, selectedCollection?.folders.length, selectedCollection?.id]);
 
+  const updateCollections = (newValue: Collection[]) => {
+    localStorage.setItem("collections", JSON.stringify(newValue));
+    setCollections(newValue);
+  };
+
   const addCollection = (name: string) => {
     const newValue = [
       ...collections,
@@ -75,17 +82,14 @@ export const CollectionsProvider = ({
       },
     ];
 
-    setCollections(newValue);
-
-    localStorage.setItem("collections", JSON.stringify(newValue));
+    updateCollections(newValue);
     setSelectedCollection(newValue[newValue.length - 1]);
   };
 
   const removeCollection = (id: string) => {
     const newValue = collections.filter((collection) => collection.id !== id);
 
-    setCollections(newValue);
-    localStorage.setItem("collections", JSON.stringify(newValue));
+    updateCollections(newValue);
 
     if (newValue[0]) {
       setSelectedCollection(newValue[0]);
@@ -121,8 +125,24 @@ export const CollectionsProvider = ({
       return collection;
     });
 
-    setCollections(newValue);
-    localStorage.setItem("collections", JSON.stringify(newValue));
+    updateCollections(newValue);
+  };
+
+  const removeFolderFromCollection = (id: string, folderId: string) => {
+    const newValue = collections.map((collection) => {
+      if (collection.id === id) {
+        return {
+          ...collection,
+          folders: collection.folders.filter(
+            (folder) => folder.id !== folderId
+          ),
+        };
+      }
+
+      return collection;
+    });
+
+    updateCollections(newValue);
   };
 
   return (
@@ -134,6 +154,7 @@ export const CollectionsProvider = ({
         selectedCollection,
         selectCollection,
         addFolderToCollection,
+        removeFolderFromCollection,
         loading,
       }}
     >
