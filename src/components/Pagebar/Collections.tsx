@@ -16,7 +16,6 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { Code } from "lucide-react";
 import { useCollections } from "@/providers/CollectionsProvider";
 import NewFolderButton from "../NewFolderButton";
 
