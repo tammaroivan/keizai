@@ -1,7 +1,7 @@
 import React from "react";
 import Breadcrumb from "@/components/Breadcrumb";
 import ContractInput from "@/components/ContractInput";
-import Collections from "@/components/Pagebar/Collections";
+import Collections from "@/components/Pagebar/Collections/Collections";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import Image from "next/image";
 import Terminal from "@/components/ui/Terminal";

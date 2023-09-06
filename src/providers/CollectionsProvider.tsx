@@ -3,7 +3,7 @@
 import React, { createContext, useContext, useState, useEffect } from "react";
 import { Invocation } from "./InvocationProvider";
 
-type Folder = {
+export type Folder = {
   id: string;
   name: string;
   invocations: Invocation[];
