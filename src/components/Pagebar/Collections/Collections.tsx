@@ -3,21 +3,12 @@
 import React from "react";
 import { Button } from "@/components/ui/button";
 import {
-  Select,
-  SelectContent,
-  SelectGroup,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
-import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { useCollections } from "@/providers/CollectionsProvider";
-import { X } from "lucide-react";
 import Folder from "./Folder";
 import MoreOptions from "./MoreOptions";
 
@@ -26,8 +17,6 @@ const Collections = () => {
     collections,
     addCollection,
     removeCollection,
-    selectedCollection,
-    selectCollection,
     addFolderToCollection,
     removeFolderFromCollection,
   } = useCollections();
@@ -74,7 +63,7 @@ const Collections = () => {
             </div>
             <AccordionContent>
               {collection.folders.length ? (
-                <div className="flex flex-col ml-6 text-slate-400">
+                <div className="flex flex-col ml-5 text-slate-400">
                   {collection.folders.map((folder) => (
                     <Folder
                       key={folder.id}

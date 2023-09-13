@@ -20,7 +20,7 @@ const Folder = ({
     <Accordion type="multiple" className="w-full">
       <AccordionItem value={folder.id} className="border-none">
         <AccordionTrigger className="h-10 w-full">
-          <div className="flex justify-between items-center w-full group">
+          <div className="flex justify-between items-center w-full group text-slate-100">
             <span>{folder.name}</span>
             <Button
               variant="ghost"
@@ -33,9 +33,9 @@ const Folder = ({
         </AccordionTrigger>
         <AccordionContent>
           {folder.invocations.length ? (
-            <div className="flex flex-col gap-2 ml-4 text-slate-400">
+            <div className="flex flex-col gap-2 ml-4 text-slate-100">
               {folder.invocations.map((invocation) => (
-                <span>Invocation</span>
+                <span key={invocation.id}>{invocation.name}</span>
               ))}
             </div>
           ) : (
