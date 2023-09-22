@@ -39,7 +39,7 @@ const Folder = ({
               ))}
             </div>
           ) : (
-            <span className="ml-7 text-xs">No invocations</span>
+            <span className="ml-7 text-sm">No invocations</span>
           )}
         </AccordionContent>
       </AccordionItem>
