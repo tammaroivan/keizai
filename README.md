@@ -1,3 +1,5 @@
+# THIS PROJECT HAS BEEN MOVED TO THE [KEIZAI ORGANIZATION](https://github.com/keizai-tools)
+
 
 ![New Project](https://github.com/tammaroivan/keizai/assets/25356559/c1815eba-4c4b-4b49-a4a8-c50c4d98697b)
 
